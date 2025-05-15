@@ -73,81 +73,82 @@ namespace Crypt
 
             t.BackColor = CurrentTheme.Background;
 
-            if (t is Guna2Button)
-                UpdateSelectedTab(SelectedTab);
-
             foreach (Control control in t.Controls)
             {
-                if (control is Guna2Button btn)
+                switch (control)
                 {
-                    if (btn != SelectedTab)
-                        btn.FillColor = CurrentTheme.Button;
-                    else
-                        btn.FillColor = CurrentTheme.SelectedTab;
-                    btn.ForeColor = CurrentTheme.Foreground;
+                    case Guna2Button btn:
+                        if (btn != SelectedTab || btn != SettingsTab.SelectedTab)
+                            btn.FillColor = CurrentTheme.Button;
+                        else
+                            UpdateSelectedTab(btn);
 
-                    if (CurrentTheme == Themes.DarkMode)
-                    {
-                        if (!btn.Tag?.ToString()?.Contains("inverted") ?? true)
+                        btn.ForeColor = CurrentTheme.Foreground;
+
+                        if (CurrentTheme == Themes.DarkMode)
                         {
-                            btn.Image = ImageExtensions.InvertColors(btn.Image);
-                            btn.Tag = "inverted";
+                            if (!btn.Tag?.ToString()?.Contains("inverted") ?? true)
+                            {
+                                btn.Image = ImageExtensions.InvertColors(btn.Image);
+                                btn.Tag = "inverted";
+                            }
                         }
-                    }
-                    else
-                    {
-                        if (btn.Tag?.ToString() == "inverted")
+                        else
                         {
-                            btn.Image = ImageExtensions.InvertColors(btn.Image);
-                            btn.Tag = null;
+                            if (btn.Tag?.ToString() == "inverted")
+                            {
+                                btn.Image = ImageExtensions.InvertColors(btn.Image);
+                                btn.Tag = null;
+                            }
                         }
-                    }
-                }
-                else if (control is Guna2Panel pnl)
-                {
-                    pnl.BackColor = CurrentTheme.Background;
-                    UpdateTheme(pnl);
+                        break;
 
-                    if (pnl == guna2Panel1)
-                        pnl.BackColor = CurrentTheme.TopBar;
-                }
-                else if (control is UserControl ctrl)
-                {
-                    ctrl.BackColor = CurrentTheme.Background;
-                    UpdateTheme(ctrl);
+                    case Guna2Panel pnl:
+                        pnl.BackColor = CurrentTheme.Background;
+                        UpdateTheme(pnl);
 
-                    if (ctrl is Settings s)
-                    {
-                        UpdateTheme(SettingsTab.ApperanceTab);
-                        UpdateTheme(SettingsTab.AboutHelpTab);
-                        UpdateTheme(SettingsTab.GameTab);
-                    }
-                    else if (ctrl is LocalPlayer l)
-                    {
-                        UpdateTheme(l);
-                    }
-                }
-                else if (control is Guna2HtmlLabel lb)
-                {
-                    lb.ForeColor = CurrentTheme.Foreground;
-                }
-                else if (control is Guna2ControlBox cbtn)
-                {
-                    cbtn.IconColor = CurrentTheme.Foreground;
-                    cbtn.FillColor = CurrentTheme.TopBar;
-                }
-                else if (control is Guna2ComboBox cbb)
-                {
-                    cbb.FocusedColor = CurrentTheme.SelectedTab;
-                    cbb.FillColor = CurrentTheme.Button;
-                    cbb.ForeColor = CurrentTheme.Foreground;
-                    cbb.BorderColor = CurrentTheme.SelectedTab;
-                }
-                else if (control is Guna2TextBox tb)
-                {
-                    tb.FillColor = CurrentTheme.Button;
-                    tb.ForeColor = CurrentTheme.Foreground;
-                    tb.BorderColor = CurrentTheme.SelectedTab;
+                        if (pnl == guna2Panel1)
+                            pnl.BackColor = CurrentTheme.TopBar;
+                        break;
+
+                    case Guna2TextBox tb:
+                        tb.FillColor = CurrentTheme.Button;
+                        tb.ForeColor = CurrentTheme.Foreground;
+                        tb.PlaceholderForeColor = CurrentTheme.Foreground;
+                        tb.BorderColor = CurrentTheme.SelectedTab;
+                        break;
+
+                    case Guna2HtmlLabel lb:
+                        lb.ForeColor = CurrentTheme.Foreground;
+                        break;
+
+                    case Guna2ControlBox cbtn:
+                        cbtn.IconColor = CurrentTheme.Foreground;
+                        cbtn.FillColor = CurrentTheme.TopBar;
+                        break;
+
+                    case Guna2ComboBox cbb:
+                        cbb.FocusedColor = CurrentTheme.SelectedTab;
+                        cbb.FillColor = CurrentTheme.Button;
+                        cbb.ForeColor = CurrentTheme.Foreground;
+                        cbb.BorderColor = CurrentTheme.SelectedTab;
+                        break;
+
+                    case UserControl ctrl:
+                        ctrl.BackColor = CurrentTheme.Background;
+                        UpdateTheme(ctrl);
+
+                        if (ctrl is Settings s)
+                        {
+                            UpdateTheme(SettingsTab.ApperanceTab);
+                            UpdateTheme(SettingsTab.AboutHelpTab);
+                            UpdateTheme(SettingsTab.GameTab);
+                        }
+                        else if (ctrl is LocalPlayer l)
+                        {
+                            UpdateTheme(l);
+                        }
+                        break;
                 }
             }
         }
