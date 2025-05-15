@@ -49,7 +49,6 @@ namespace Crypt
             {
                 while (true)
                 {
-                    // Update inject label
                     if (PipeLineServerThingy.IsConnected && guna2HtmlLabel1.Text != "Crypt | Injected : Yes")
                         guna2HtmlLabel1.Text = "Crypt | Injected : Yes";
                     else if (!PipeLineServerThingy.IsConnected && guna2HtmlLabel1.Text != "Crypt | Injected : No")
@@ -137,6 +136,19 @@ namespace Crypt
                     cbtn.IconColor = CurrentTheme.Foreground;
                     cbtn.FillColor = CurrentTheme.TopBar;
                 }
+                else if (control is Guna2ComboBox cbb)
+                {
+                    cbb.FocusedColor = CurrentTheme.SelectedTab;
+                    cbb.FillColor = CurrentTheme.Button;
+                    cbb.ForeColor = CurrentTheme.Foreground;
+                    cbb.BorderColor = CurrentTheme.SelectedTab;
+                }
+                else if (control is Guna2TextBox tb)
+                {
+                    tb.FillColor = CurrentTheme.Button;
+                    tb.ForeColor = CurrentTheme.Foreground;
+                    tb.BorderColor = CurrentTheme.SelectedTab;
+                }
             }
         }
 
@@ -173,7 +185,7 @@ namespace Crypt
 
             if (oof != IntPtr.Zero && oofer != null) 
             {
-                oofer.Eject(oof, "Crypt.Injection", "Inject", "");
+                oofer.Eject(oof, "Crypt.Injection", "Inject", "OnDejection");
             }
         }
     }
