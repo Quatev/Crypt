@@ -61,6 +61,12 @@
     <Compile Include="Controls\LocalPlayer\LocalPlayer.Designer.cs">
       <DependentUpon>LocalPlayer.cs</DependentUpon>
     </Compile>
+    <Compile Include="Controls\Notification.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\Notification.Designer.cs">
+      <DependentUpon>Notification.cs</DependentUpon>
+    </Compile>
     <Compile Include="Controls\Settings\AboutHelp.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -104,6 +110,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Controls\LocalPlayer\LocalPlayer.resx">
       <DependentUpon>LocalPlayer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\Notification.resx">
+      <DependentUpon>Notification.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Controls\Settings\AboutHelp.resx">
       <DependentUpon>AboutHelp.cs</DependentUpon>
@@ -163,7 +172,7 @@
     <None Include="Resources\syringe.png" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\ZHAX Instance\Crypt Instance.csproj">
+    <ProjectReference Include="..\Crypt Instance\Crypt Instance.csproj">
       <Project>{250b6ee1-0d48-42a7-8372-b89cf98a532b}</Project>
       <Name>Crypt Instance</Name>
     </ProjectReference>

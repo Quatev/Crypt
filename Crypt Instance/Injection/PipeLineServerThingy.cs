@@ -59,26 +59,49 @@ namespace Crypt.Injection
             try
             {
                 PipeServer = new NamedPipeClientStream(".", "CryptInternalPipe", PipeDirection.InOut, PipeOptions.Asynchronous);
-                PipeServer.Connect(5000);
+                await PipeServer.ConnectAsync(5000);
 
                 Debug.Log("Connected to EXE!");
 
                 _ = Task.Run(async () =>
                 {
-                    byte[] buffer = new byte[1024];
-                    while (PipeServer.IsConnected)
+                    var buffer = new byte[1024];
+                    var stream = PipeServer;
+
+                    try
                     {
-                        int bytesRead = await PipeServer.ReadAsync(buffer, 0, buffer.Length);
-                        if (bytesRead > 0)
+                        while (true)
                         {
-                            string command = Encoding.UTF8.GetString(buffer, 0, bytesRead);
-                            CommandHandler(command);
-                            Debug.Log("[EXE] " + command);
+                            int bytesRead = await stream.ReadAsync(buffer, 0, buffer.Length);
+                            if (bytesRead == 0)
+                            {
+                                Debug.Log("Pipe closed by the server.");
+                                break;
+                            }
+
+                            string command = Encoding.UTF8.GetString(buffer, 0, bytesRead).Trim('\0', '\r', '\n');
+                            if (!string.IsNullOrWhiteSpace(command))
+                            {
+                                CommandHandler(command);
+                                Debug.Log("[EXE] " + command);
+                            }
                         }
+                    }
+                    catch (Exception ex)
+                    {
+                        Debug.LogError("Pipe read error: " + ex.Message);
+                    }
+                    finally
+                    {
+                        stream.Dispose();
                     }
                 });
             }
-            catch { }
+            catch (Exception ex)
+            {
+                Debug.LogError("Pipe connection error: " + ex.Message);
+            }
         }
+
     }
 }

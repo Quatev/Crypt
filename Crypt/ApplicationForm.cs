@@ -69,6 +69,8 @@ namespace Crypt
 
         public void UpdateTheme(Control t)
         {
+            UpdateSelectedTab(SelectedTab);
+            SettingsTab.UpdateSelectedTab(SettingsTab.SelectedTab);
             if (t == null) return;
 
             t.BackColor = CurrentTheme.Background;
@@ -116,6 +118,11 @@ namespace Crypt
                         tb.ForeColor = CurrentTheme.Foreground;
                         tb.PlaceholderForeColor = CurrentTheme.Foreground;
                         tb.BorderColor = CurrentTheme.SelectedTab;
+
+                        tb.DisabledState.FillColor = CurrentTheme.Background;
+                        tb.DisabledState.ForeColor = CurrentTheme.Foreground;
+                        tb.DisabledState.PlaceholderForeColor = CurrentTheme.Foreground;
+                        tb.DisabledState.BorderColor = CurrentTheme.SelectedTab;
                         break;
 
                     case Guna2HtmlLabel lb:
@@ -187,6 +194,16 @@ namespace Crypt
             if (oof != IntPtr.Zero && oofer != null) 
             {
                 oofer.Eject(oof, "Crypt.Injection", "Inject", "OnDejection");
+            }
+        }
+
+        private void ApplicationForm_Load(object sender, EventArgs e)
+        {
+            if (!TabHolder.Controls.Contains(LocalPlayerTab))
+            {
+                TabHolder.Controls.Clear();
+                TabHolder.Controls.Add(LocalPlayerTab);
+                UpdateSelectedTab(guna2Button1);
             }
         }
     }

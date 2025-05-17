@@ -37,5 +37,10 @@ namespace Crypt.Controls.Settings
 
             }
         }
+
+        private void guna2ToggleSwitch1_CheckedChanged(object sender, EventArgs e)
+        {
+            this.ParentForm.TopMost = guna2ToggleSwitch1.Checked;
+        }
     }
 }

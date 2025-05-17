@@ -33,6 +33,7 @@
             this.guna2HtmlLabel2 = new Guna.UI2.WinForms.Guna2HtmlLabel();
             this.guna2HtmlLabel3 = new Guna.UI2.WinForms.Guna2HtmlLabel();
             this.guna2Button3 = new Guna.UI2.WinForms.Guna2Button();
+            this.notification1 = new Crypt.Controls.Notification();
             this.SuspendLayout();
             // 
             // guna2ToggleSwitch1
@@ -111,10 +112,22 @@
             this.guna2Button3.TextOffset = new System.Drawing.Point(-3, 0);
             this.guna2Button3.Click += new System.EventHandler(this.guna2Button3_Click);
             // 
+            // notification1
+            // 
+            this.notification1.BackColor = System.Drawing.SystemColors.ControlLight;
+            this.notification1.BorderColor = System.Drawing.Color.Black;
+            this.notification1.BorderRadius = 3;
+            this.notification1.Location = new System.Drawing.Point(264, 88);
+            this.notification1.Name = "notification1";
+            this.notification1.ProgressBarColor = System.Drawing.SystemColors.Control;
+            this.notification1.Size = new System.Drawing.Size(150, 47);
+            this.notification1.TabIndex = 8;
+            // 
             // Game
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.notification1);
             this.Controls.Add(this.guna2HtmlLabel3);
             this.Controls.Add(this.guna2Button3);
             this.Controls.Add(this.guna2HtmlLabel2);
@@ -134,5 +147,6 @@
         private Guna.UI2.WinForms.Guna2HtmlLabel guna2HtmlLabel2;
         private Guna.UI2.WinForms.Guna2Button guna2Button3;
         private Guna.UI2.WinForms.Guna2HtmlLabel guna2HtmlLabel3;
+        private Notification notification1;
     }
 }
