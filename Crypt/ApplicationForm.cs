@@ -8,6 +8,7 @@ using Crypt.Controls.LocalPlayer;
 using System.Threading.Tasks;
 using SharpMonoInjector;
 using Crypt.Helpers;
+using Crypt.Controls;
 
 namespace Crypt
 {
@@ -141,7 +142,19 @@ namespace Crypt
                         cbb.BorderColor = CurrentTheme.SelectedTab;
                         break;
 
+                    case Guna2TrackBar gtb:
+                        gtb.ForeColor = CurrentTheme.Foreground;
+                        gtb.ThumbColor = CurrentTheme.SelectedTab;
+                        break;
+
                     case UserControl ctrl:
+                        if (ctrl is Notification notif)
+                        {
+                            notif.ProgressBarColor = CurrentTheme.SelectedTab;
+                            notif.BackColor = CurrentTheme.Button;
+                            break;
+                        }
+
                         ctrl.BackColor = CurrentTheme.Background;
                         UpdateTheme(ctrl);
 

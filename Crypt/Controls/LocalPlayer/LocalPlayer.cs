@@ -66,5 +66,21 @@ namespace Crypt.Controls.LocalPlayer
         {
             PipeLineServerThingy.SendMessage($"name_change {guna2TextBox1.Text}");
         }
+
+        private void guna2HtmlLabel3_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void guna2ComboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            guna2HtmlLabel3.Text = "Changes your player's " + guna2ComboBox1.SelectedItem.ToString();
+            guna2Button3.Text = "Set " + guna2ComboBox1.SelectedItem.ToString();
+        }
+
+        private void guna2TrackBar1_Scroll(object sender, ScrollEventArgs e)
+        {
+            guna2HtmlLabel4.Text = guna2TrackBar1.Value.ToString();
+        }
     }
 }

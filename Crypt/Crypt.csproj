@@ -97,12 +97,6 @@
     <Compile Include="ApplicationForm.Designer.cs">
       <DependentUpon>ApplicationForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Controls\ThemeTester.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="Controls\ThemeTester.Designer.cs">
-      <DependentUpon>ThemeTester.cs</DependentUpon>
-    </Compile>
     <Compile Include="Helpers\Dll Comunication\PipeLineServerThingy.cs" />
     <Compile Include="Helpers\ImageStupidColor.cs" />
     <Compile Include="Helpers\Themes.cs" />
@@ -128,9 +122,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="ApplicationForm.resx">
       <DependentUpon>ApplicationForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Controls\ThemeTester.resx">
-      <DependentUpon>ThemeTester.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

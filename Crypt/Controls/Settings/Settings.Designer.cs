@@ -48,7 +48,7 @@
             this.guna2Button2.ForeColor = System.Drawing.Color.Black;
             this.guna2Button2.Image = global::Crypt.Properties.Resources.gamepad_2;
             this.guna2Button2.ImageOffset = new System.Drawing.Point(-5, 0);
-            this.guna2Button2.Location = new System.Drawing.Point(417, 3);
+            this.guna2Button2.Location = new System.Drawing.Point(417, 0);
             this.guna2Button2.Name = "guna2Button2";
             this.guna2Button2.PressedColor = System.Drawing.Color.LightGray;
             this.guna2Button2.ShadowDecoration.Depth = 1;
@@ -80,7 +80,7 @@
             this.guna2Button3.ForeColor = System.Drawing.Color.Black;
             this.guna2Button3.Image = global::Crypt.Properties.Resources.circle_help;
             this.guna2Button3.ImageOffset = new System.Drawing.Point(-5, 0);
-            this.guna2Button3.Location = new System.Drawing.Point(211, 3);
+            this.guna2Button3.Location = new System.Drawing.Point(211, 0);
             this.guna2Button3.Name = "guna2Button3";
             this.guna2Button3.PressedColor = System.Drawing.Color.LightGray;
             this.guna2Button3.ShadowDecoration.Depth = 1;
@@ -105,7 +105,7 @@
             this.guna2Button1.ForeColor = System.Drawing.Color.Black;
             this.guna2Button1.Image = global::Crypt.Properties.Resources.eye;
             this.guna2Button1.ImageOffset = new System.Drawing.Point(-5, 0);
-            this.guna2Button1.Location = new System.Drawing.Point(3, 3);
+            this.guna2Button1.Location = new System.Drawing.Point(3, 0);
             this.guna2Button1.Name = "guna2Button1";
             this.guna2Button1.PressedColor = System.Drawing.Color.LightGray;
             this.guna2Button1.ShadowDecoration.Depth = 1;

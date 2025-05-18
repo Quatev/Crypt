@@ -117,11 +117,13 @@
             this.notification1.BackColor = System.Drawing.SystemColors.ControlLight;
             this.notification1.BorderColor = System.Drawing.Color.Black;
             this.notification1.BorderRadius = 3;
-            this.notification1.Location = new System.Drawing.Point(264, 88);
+            this.notification1.DescriptionText = "Test Notification for crypt";
+            this.notification1.Location = new System.Drawing.Point(381, 70);
             this.notification1.Name = "notification1";
             this.notification1.ProgressBarColor = System.Drawing.SystemColors.Control;
             this.notification1.Size = new System.Drawing.Size(150, 47);
             this.notification1.TabIndex = 8;
+            this.notification1.TitleText = "Tester";
             // 
             // Game
             // 
